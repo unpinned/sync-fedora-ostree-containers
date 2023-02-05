@@ -33,8 +33,8 @@ jobs:
       - name: Login
         run: podman login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
       - name: Encapsulate Testing
-        if: ${{ matrix.version }} == 37
+        if: ${{ matrix.version  == '37' }}
         run: ./encap.sh fedora/${{ matrix.version }}/x86_64/testing/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
       - name: Encapsulate Rawhide
-        if: ${{ matrix.version }} == rawhide
+        if: ${{ matrix.version == 'rawhide' }} 
         run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
