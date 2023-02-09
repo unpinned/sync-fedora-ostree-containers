@@ -20,7 +20,7 @@ jobs:
       max-parallel: 1
       matrix:
         variant: [silverblue]
-        version: [37, rawhide]
+        version: [37, 38, rawhide]
     runs-on: ubuntu-latest
     container:
       # We're using coreos-assembler just since it is a pre-made
@@ -37,4 +37,7 @@ jobs:
         run: ./encap.sh fedora/${{ matrix.version }}/x86_64/testing/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
       - name: Encapsulate Rawhide
         if: ${{ matrix.version == 'rawhide' }} 
+        run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
+      - name: Encapsulate F38
+        if: ${{ matrix.version == '38' }} 
         run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
