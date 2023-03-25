@@ -20,7 +20,7 @@ jobs:
       max-parallel: 1
       matrix:
         variant: [silverblue]
-        version: [37, 38]
+        version: [38]
     runs-on: ubuntu-latest
     container:
       # We're using coreos-assembler just since it is a pre-made
