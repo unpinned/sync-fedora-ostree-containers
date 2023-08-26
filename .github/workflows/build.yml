@@ -40,4 +40,4 @@ jobs:
       #  run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
       - name: Encapsulate F39
         if: ${{ matrix.version == '39' }} 
-        run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
+        run: ./encap.sh fedora/${{ matrix.version }}/x86_64/testing/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
